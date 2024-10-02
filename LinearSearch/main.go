@@ -1,36 +1,41 @@
 package main
 
-import "fmt"
-
-func LinearSearchWithArray (input [10]int) {
-	fmt.Println("--------------------------------------------------------")
-
-	for index := 0; index < 10; index++ {
-		message := fmt.Sprintf("Index: %d, Number: %d", index, input[index])
-
-		if index >= 0 && index <= 3 {
-			fmt.Println(message)
-		}
-	}
-
-	for index := 0; index < len(input); index++ {
-		message := fmt.Sprintf("Index: %d, Number: %d", index, input[index])
-		if index > 3 && index <= 6 {
-			fmt.Println(message)
-		}
-	}
-
-	for index, value := range  input {
-		message := fmt.Sprintf("Index: %d, Number: %d", index, value)
-		if index > 6 && index <= 10 {
-			fmt.Println(message)
-		}
-	}
-
-	fmt.Println("--------------------------------------------------------")
-}
+import (
+	"fmt"
+	"time"
+)
 
 func main() {
-	var array1 [10]int = [10]int{1, 2, 30, 12, 34, 95, 21, 22, 44, 12} 
-	LinearSearchWithArray(array1)
+	counter := 0
+
+	number := 10000000
+
+	array1 := GenerateSortedArray(100000000)
+	
+	start := time.Now()
+	LinearSearchWithArray(array1, number, &counter)
+	elapsed := time.Since(start)
+	fmt.Printf("Execution time: %s - Counter: %d\n", elapsed, counter)
+}
+
+func GenerateSortedArray(size int) []int {
+	array := make([]int, size)
+
+	for i := 0; i < size; i++ {
+		array[i] = i + 1
+	}
+
+	return array
+}
+
+func LinearSearchWithArray(input []int, searchNumber int, counter *int) bool {
+	for _, value := range input {
+		*counter++
+		if value == searchNumber {
+			fmt.Println("--------------------------SEARCH FINISHED-----------------------------")
+			return true
+		}
+	}
+
+	return false
 }
