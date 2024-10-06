@@ -1,6 +1,6 @@
 package search
 
-func LinearSearchWithArray(input []int, searchNumber int, counter *int) int {
+func LinearSearch(input []int, searchNumber int, counter *int) int {
 	for _, value := range input {
 		*counter++
 		if value == searchNumber {

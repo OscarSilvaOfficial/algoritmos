@@ -15,7 +15,7 @@ func main() {
 	
 	// IMPORTANT: Binary Search
 	start := time.Now()
-	data := search.BoubleSearchWithArray(array1, number, &counter)
+	data := search.BoubleSearch(array1, number, &counter)
 	elapsed := time.Since(start)
 
 	fmt.Printf("Binary Search: Execution time: %s - Counter: %d\n", elapsed, counter)
@@ -26,7 +26,7 @@ func main() {
 	counter = 0
 
 	start = time.Now()
-	data = search.LinearSearchWithArray(array1, number, &counter)
+	data = search.LinearSearch(array1, number, &counter)
 	elapsed = time.Since(start)
 
 	fmt.Printf("Linear Search: Execution time: %s - Counter: %d\n", elapsed, counter)
